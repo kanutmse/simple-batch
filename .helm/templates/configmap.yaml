@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "app.fullname" . }}
+  name: {{ $.Values.fullnameOverride }}
 data:
-  config.yaml: |
+  CONFIGS: |
   {{- toYaml .Values.configmap | nindent 4 }}

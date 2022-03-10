@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ $.Values.cronjob.name }}
+spec:
+  schedule: {{ $.Values.cronjob.schedule | quote}}
+  successfulJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: simple-cronjob
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              imagePullPolicy: IfNotPresent
+              envFrom:
+                - configMapRef:
+                    name: {{ include "simple-cronjob.fullname" . }}
+                - secretRef:
+                    name: {{ include "simple-cronjob.fullname" . }}
+          restartPolicy: OnFailure

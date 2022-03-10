@@ -3,17 +3,21 @@
 
 cronjob:
   name: simple-cronjob
-  command: ./app/goapp/simple-cronjob
+  command: ./app/batch/simple-cronjob
   # Schedule at 04.00 AM everyday
   schedule: "0 21 * * *"
+  # failedJobsHistoryLimit: 1
+  # successfulJobsHistoryLimit: 3
+  # concurrencyPolicy: Allow
+  # restartPolicy: OnFailure
 
 fullnameOverride: simple-cronjob
 replicaCount: 1
 
 image:
-  repository: asia.gcr.io/d-commerce-sit/batch/reconcile-report
+  repository: asia.gcr.io/poc-innovation-iot/simple-cronjob
   pullPolicy: Always
-  tag: latest
+  tag: v1.0
 
 service:
   type: ClusterIP
@@ -71,4 +75,6 @@ affinity: {}
 configmap:
   
 secrets:
+  all:
+
 
