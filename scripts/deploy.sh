@@ -1,6 +1,9 @@
 
+#Must gcloud init and select project and set creditenial first 
 
 #Building Image 
+# docker build --help for more info 
+# -t whichmean we push the image with tag in this case we tag the image as version 1.0 (v1.0)
 docker build -t asia.gcr.io/poc-innovation-iot/simple-cronjob:v1.0 ..
 
 #Push built Image to container Registry

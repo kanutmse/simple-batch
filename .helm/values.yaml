@@ -5,6 +5,7 @@ cronjob:
   name: simple-cronjob
   command: ./app/batch/simple-cronjob
   # Schedule at 04.00 AM everyday
+  #more info https://crontab.guru/
   schedule: "0 21 * * *"
   # failedJobsHistoryLimit: 1 # History Batch that failed you wanna keep
   # successfulJobsHistoryLimit: 3 # History Batch that failed you wanna use
