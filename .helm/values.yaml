@@ -6,10 +6,11 @@ cronjob:
   command: ./app/batch/simple-cronjob
   # Schedule at 04.00 AM everyday
   schedule: "0 21 * * *"
-  # failedJobsHistoryLimit: 1
-  # successfulJobsHistoryLimit: 3
-  # concurrencyPolicy: Allow
-  # restartPolicy: OnFailure
+  # failedJobsHistoryLimit: 1 # History Batch that failed you wanna keep
+  # successfulJobsHistoryLimit: 3 # History Batch that failed you wanna use
+  # concurrencyPolicy: Allow = can run simultaneously , Forbid = w8 old job to finish then can start a new one, Replace = replace currently running job
+  # restartPolicy: OnFailure = Restart Job If Job failed, Never = If failed nerver run this job again
+  #more information https://cloud.google.com/kubernetes-engine/docs/how-to/cronjobs#configure-cronjob
 
 fullnameOverride: simple-cronjob
 replicaCount: 1
